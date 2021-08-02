@@ -1,0 +1,12 @@
+APPS NEEDED: Apk Editor, Parallel Space Lite, Parallel Space Lite 64 Bit, CSV Editor, Total Commander
+
+1) Open Brawl Stars through Parallel Space, then add the apps which you need in Parallel Space. 
+2) Open Total Commander in Parallel Space and enter: /data/data/com.lbe.parallel.intl (/data/data/com.parallel.space.lite.arm64 for Lite)
+3) Press parallel_intl (parallel_lite for Lite) and open 0.
+4) Open com.supercell.brawlstars, then open update. Then it will appear csv_client, csv_logic, location & fingerprint.json.
+5) Make a folder in Internal Storage by swiping to Left or Right side.
+6) Press ⋮ and press New folder to open New folder. 
+7) Select csv_client, csv_logic & location. Then move those files to the folder you’ve created. 
+8) Open APK Editor, Press Select an APK File, then find your Brawl Stars APK. Press it, then press Simple Edit. Go to CSV_Logic or CSV_Client. Choose any CSV you want and click the right button to Save them.
+9) Open CSV Editor through Parallel Space, press ⋮ , then Files then Press Open to open the files you saved. When you finish editing the files, press ⋮ then press Save button.
+10) Open Total Commander through Parallel Space, then select the file you saved. Press 📄, then copy to (Make Sure it is .../com.supercell.brawlstars/update) and then click in Overwrite everything.
