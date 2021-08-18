@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+CmdUtils.CreateCommand({
+  name: "lmgtfy",
+  synonyms: ["letmegooglethatforyou"],
+  takes: {"words to google": noun_arb_text},
+  icon: "http://letmegooglethatforyou.com/favicon.ico",
+  description: "Replaces the selected words with a <a href=\"http://www.tinyurl.com\">TinyUrl</a> of the <a href=\"\">Let Me Google That For You</a> link",
+  preview: function( pblock, urlToShorten ){
+    pblock.innerHTML = "Replaces the selected URL with a tiny LMGTFY url.";
+    var baseUrl = "http://tinyurl.com/api-create.php?url=http://letmegooglethatforyou.com/?q=";
+    pblock.innerHTML = "Replaces the selected URL with ",
+    jQuery.get( baseUrl + urlencode(urlToShorten.text), function( tinyUrl ) {
+      if(tinyUrl != "Error") pblock.innerHTML += tinyUrl;
+    });
+  },
+  execute: function( urlToShorten ) {
+    //escaping urlToShorten will not create the right tinyurl
+    var baseUrl = "http://tinyurl.com/api-create.php?url=http://letmegooglethatforyou.com/?q=";
+    jQuery.get( baseUrl + urlencode(urlToShorten.text), function( tinyUrl ) {
+      CmdUtils.setSelection( tinyUrl );
+    });
+  }
+});
 
-You can use the [editor on GitHub](https://github.com/BSGS-YT/Brawl-Stars-Mod/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BSGS-YT/Brawl-Stars-Mod/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+function urlencode(str) {
+  str = escape(str);
+  str = str.replace('+', '%2B');
+  str = str.replace('%20', '+');
+  str = str.replace('*', '%2A');
+  str = str.replace('/', '%2F');
+  str = str.replace('@', '%40');
+  return str;
+}
